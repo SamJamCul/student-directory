@@ -4,9 +4,15 @@ def input_students
   puts "To finish, just hit return twice"
   students = []
   name = gets.chomp
+  i = 0
   while !name.empty? do
     students << {name: name, cohort: :november}
+    puts "What's their hobby though?"
+    students[i][:hobby] = gets.chomp
+    puts "And what about their country of birth?"
+    students[i][:birthplace] = gets.chomp
     puts "now we have #{students.count} students"
+    i += 1
     name = gets.chomp
   end
   students
