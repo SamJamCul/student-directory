@@ -19,7 +19,9 @@ end
 
 def print(names)
   names.each_with_index do |name, index|
-    puts "#{index + 1}. #{name[:name]} (#{name[:cohort].capitalize} cohort)"
+    if name[:name][0].upcase == "A"
+      puts "#{index + 1}. #{name[:name]} (#{name[:cohort].capitalize} cohort)"
+    end
   end
 end
 
