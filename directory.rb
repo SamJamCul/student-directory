@@ -18,8 +18,10 @@ def print_header
 end
 
 def print(names)
-  names.each_with_index do |name, index|
-    puts "#{index + 1}. #{name[:name]} (#{name[:cohort].capitalize} cohort)"
+  n = 0
+  while n < names.length
+    puts "#{(n+1)}. #{names[n][:name]} (#{names[n][:cohort]} cohort)"
+    n += 1
   end
 end
 
