@@ -26,7 +26,7 @@ end
 def print(names)
   n = 0
   while n < names.length
-    puts "#{(n+1)}. #{names[n][:name]} (#{names[n][:cohort]} cohort)"
+    puts "#{(n+1)}. #{names[n][:name]} (#{names[n][:cohort]} cohort)".center(50, "-")
     n += 1
   end
 end
