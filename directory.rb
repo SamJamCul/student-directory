@@ -1,18 +1,18 @@
 # let's put all students into an array
+def grab_student(array)
+  result = []
+  result << {name: array[0], cohort: array[1].capitalize.to_sym}
+  return result
+end
+
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   students = []
   name = gets.chomp
-  i = 0
   while !name.empty? do
-    students << {name: name, cohort: :november}
-    puts "What's their hobby though?"
-    students[i][:hobby] = gets.chomp
-    puts "And what about their country of birth?"
-    students[i][:birthplace] = gets.chomp
+    students << grab_student(name.split(", "))
     puts "now we have #{students.count} students"
-    i += 1
     name = gets.chomp
   end
   students
