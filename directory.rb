@@ -78,7 +78,7 @@ def process(selection)
   when "3"
     save_students
   when "4"
-    try_load_students
+    load_students
   when "9"
     exit 
   else
@@ -112,9 +112,14 @@ def load_students(register = "students.csv")
   file = File.open(register, "r")
   file.readlines.each do |line|
     name, cohort = line.chomp.split(",")
-    @students << {name: name, cohort: cohort.to_sym}
+    add_student(name, cohort)
   end
   file.close
 end
 
+def add_student(name, cohort = :November)
+  @students << {name: name, cohort: cohort.to_sym}
+end
+
+try_load_students
 interactive_menu
