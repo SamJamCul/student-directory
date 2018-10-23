@@ -22,7 +22,7 @@ def print_header
   puts "-------------".center(50, "-")
 end
 
-def print
+def list_students
   cohorts = []
   n = 0
   @students.each do |name|
@@ -63,7 +63,7 @@ end
 
 def show_students
   print_header
-  print
+  list_students
   print_footer
 end
 
