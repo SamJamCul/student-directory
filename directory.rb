@@ -67,14 +67,19 @@ end
 def process(selection)
   case selection
   when "1"
+    puts "Let's start putting students in yeah!"
     students = input_students
   when "2"
+    puts "Initiating student display protocol, please stand by"
     show_students
   when "3"
+    puts "Creating recovery file, please wait just a minute or less"
     save_students
   when "4"
+    "Initiating load sequence, hold your damn horsey"
     load_students
   when "9"
+    "Terminating students program, ciao"
     exit 
   else
     puts "I don't know what you meant, try again"
