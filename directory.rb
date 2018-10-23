@@ -1,18 +1,13 @@
 # let's put all students into an array
 @students = []
-def grab_student(array)
-  result = Hash.new
-  result[:name] = array[0]
-  result[:cohort] = array[1].nil? ? :November : array[1].capitalize.to_sym
-  return result
-end
 
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   name = STDIN.gets.gsub("\n", "")
   while !name.empty? do
-    @students << grab_student(name.split(", "))
+    name = name.split", "
+    add_student(name[0], name[1])
     puts "now we have #{@students.count} students"
     name = STDIN.gets.gsub("\n", "")
   end
@@ -119,7 +114,8 @@ def load_students(register = "students.csv")
   file.close
 end
 
-def add_student(name, cohort = :November)
+def add_student(name, cohort = nil)
+  cohort ||= :November
   @students << {name: name, cohort: cohort.to_sym}
 end
 
