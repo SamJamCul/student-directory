@@ -101,7 +101,7 @@ def try_load_students
   return if filename.nil?
   if File.exists?(filename)
     load_students(filename)
-    puts "Loaded #{students.count} from #{filename}"
+    puts "Loaded #{@students.count} from #{filename}"
   else
     puts "Sorray, #{filename} doesn't exist."
     exit
