@@ -9,11 +9,11 @@ end
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  name = gets.gsub("\n", "")
+  name = STDIN.gets.gsub("\n", "")
   while !name.empty? do
     @students << grab_student(name.split(", "))
     puts "now we have #{@students.count} students"
-    name = gets.gsub("\n", "")
+    name = STDIN.gets.gsub("\n", "")
   end
 end
 
@@ -59,7 +59,7 @@ def interactive_menu
   @students = []
   loop do
     print_menu
-    process(gets.chomp)
+    process(STDIN.gets.chomp)
   end
 end
 
