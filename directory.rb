@@ -76,7 +76,7 @@ def process(selection)
     puts "Creating recovery file, please wait just a minute or less"
     save_students
   when "4"
-    "Initiating load sequence, hold your damn horsey"
+    puts "Initiating load sequence, hold your damn horsey"
     load_students
   when "9"
     "Terminating students program, ciao"
@@ -89,13 +89,13 @@ end
 def save_students
   puts "Under what name should this data be captured?"
   name = gets.chomp
-  file = File.open(name+".csv", "w")
-  @students.each do |student|
-    student_data = [student[:name], student[:cohort]]
-    csv_line = student_data.join(",")
-    file.puts csv_line
+  File::open(name+".csv", "w")do |f|
+    @students.each do |student|
+      student_data = [student[:name], student[:cohort]]
+      csv_line = student_data.join(",")
+      f.puts csv_line
+    end
   end
-  file.close
 end
 
 def try_load_students
@@ -108,7 +108,6 @@ def try_load_students
     puts "Loaded #{@students.count} from #{filename}"
   else
     puts "Sorray, #{filename} doesn't exist."
-    exit
   end
 end
 
