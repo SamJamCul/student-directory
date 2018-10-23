@@ -87,7 +87,9 @@ def process(selection)
 end
 
 def save_students
-  file = File.open("students.csv", "w")
+  puts "Under what name should this data be captured?"
+  name = gets.chomp
+  file = File.open(name+".csv", "w")
   @students.each do |student|
     student_data = [student[:name], student[:cohort]]
     csv_line = student_data.join(",")
