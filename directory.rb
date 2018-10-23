@@ -25,10 +25,19 @@ def print_header
 end
 
 def print(names)
+  cohorts = []
   n = 0
-  while n < names.length
-    puts "#{(n+1)}. #{names[n][:name]} (#{names[n][:cohort]} cohort)".center(50, "-")
-    n += 1
+  names.each do |name|
+    cohorts << name[:cohort] unless cohorts.include? name[:cohort]
+  end
+  cohorts.each do |group|
+    puts "#{group} Cohort".center(50, "_")
+    names.each do |name|
+      if name[:cohort] == group
+        puts "#{(n+1)}. #{name[:name]} (#{name[:cohort]} cohort)".center(50, "-")
+        n += 1
+      end
+    end
   end
 end
 
