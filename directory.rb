@@ -78,7 +78,7 @@ def process(selection)
   when "3"
     save_students
   when "4"
-    load_students
+    try_load_students
   when "9"
     exit 
   else
@@ -94,6 +94,18 @@ def save_students
     file.puts csv_line
   end
   file.close
+end
+
+def try_load_students
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists?(filename)
+    load_students(filename)
+    puts "Loaded #{students.count} from #{filename}"
+  else
+    puts "Sorray, #{filename} doesn't exist."
+    exit
+  end
 end
 
 def load_students(register = "students.csv")
