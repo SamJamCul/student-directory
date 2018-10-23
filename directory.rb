@@ -9,14 +9,12 @@ end
 def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  students = []
   name = gets.gsub("\n", "")
   while !name.empty? do
-    students << grab_student(name.split(", "))
-    puts "now we have #{students.count} students"
+    @students << grab_student(name.split(", "))
+    puts "now we have #{@students.count} students"
     name = gets.gsub("\n", "")
   end
-  students
 end
 
 def print_header
@@ -24,15 +22,15 @@ def print_header
   puts "-------------".center(50, "-")
 end
 
-def print(names)
+def print
   cohorts = []
   n = 0
-  names.each do |name|
+  @students.each do |name|
     cohorts << name[:cohort] unless cohorts.include? name[:cohort]
   end
   cohorts.each do |group|
     puts "#{group} Cohort".center(50, "_")
-    names.each do |name|
+    @students.each do |name|
       if name[:cohort] == group
         puts "#{(n+1)}. #{name[:name]} (#{name[:cohort]} cohort)".center(50, "-")
         n += 1
@@ -41,16 +39,16 @@ def print(names)
   end
 end
 
-def print_footer(names)
-  if names.count > 1
-    puts "Overall, we have #{names.count} great students"
+def print_footer
+  if @students.count > 1
+    puts "Overall, we have #{@students.count} great students"
   else
     puts "Overall, we have one crappy student"
   end
 end
 
 def interactive_menu
-  students = []
+  @students = []
   loop do
     # 1. print the menu and ask the user what to do
     puts "1. Input the students"
@@ -64,8 +62,8 @@ def interactive_menu
       students = input_students
     when "2"
       print_header
-      print(students)
-      print_footer(students)
+      print
+      print_footer
     when "9"
       exit # this will cause the program to terminate
     else
