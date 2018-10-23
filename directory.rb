@@ -2,7 +2,7 @@
 def grab_student(array)
   result = Hash.new
   result[:name] = array[0]
-  result[:cohort] = array[1].capitalize.to_sym
+  result[:cohort] = array[1].nil? ? :November : array[1].capitalize.to_sym
   return result
 end
 
@@ -12,10 +12,6 @@ def input_students
   students = []
   name = gets.chomp
   while !name.empty? do
-    while !name.include? ", " do
-      puts "gotta have that comma space brey"
-      name = gets.chomp
-    end
     students << grab_student(name.split(", "))
     puts "now we have #{students.count} students"
     name = gets.chomp
