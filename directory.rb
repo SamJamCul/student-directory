@@ -1,4 +1,5 @@
 # let's put all students into an array
+@students = []
 def grab_student(array)
   result = Hash.new
   result[:name] = array[0]
@@ -56,7 +57,6 @@ def print_menu
 end
 
 def interactive_menu
-  @students = []
   loop do
     print_menu
     process(STDIN.gets.chomp)
@@ -98,7 +98,9 @@ end
 
 def try_load_students
   filename = ARGV.first
-  return if filename.nil?
+  if filename.nil? 
+    filename = "students.csv"
+  end
   if File.exists?(filename)
     load_students(filename)
     puts "Loaded #{@students.count} from #{filename}"
