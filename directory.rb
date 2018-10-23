@@ -10,11 +10,11 @@ def input_students
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
   students = []
-  name = gets.chomp
+  name = gets.gsub("\n", "")
   while !name.empty? do
     students << grab_student(name.split(", "))
     puts "now we have #{students.count} students"
-    name = gets.chomp
+    name = gets.gsub("\n", "")
   end
   students
 end
