@@ -49,7 +49,10 @@ def print_footer(names)
   end
 end
 
-students = input_students
+students = []
+while students == []
+  students = input_students
+end
 print_header
 print(students)
 print_footer(students)
